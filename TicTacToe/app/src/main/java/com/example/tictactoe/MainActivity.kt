@@ -17,8 +17,8 @@ class MainActivity : AppCompatActivity() {
         var fragment : Fragment? = null
 
         when (view.getId()){
-            R.id.viewGameboardBtn -> fragment = GameboardFragment()
-            R.id.viewWinnerBtn -> fragment = WinnerViewFragment()
+            R.id.btn_new_game -> fragment = GameboardFragment()
+            R.id.btn_view_winner -> fragment = WinnerViewFragment()
             else -> {}
         }
 
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         var fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
 
         if (fragment != null) {
-            fragmentTransaction.replace(R.id.fragment_container, fragment)
+            fragmentTransaction.replace(R.id.container_fragments, fragment)
             fragmentTransaction.commit()
         }
     }

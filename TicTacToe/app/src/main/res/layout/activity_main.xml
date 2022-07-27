@@ -9,7 +9,7 @@
 
 
     <Button
-        android:id="@+id/viewGameboardBtn"
+        android:id="@+id/btn_new_game"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="setActiveFragments"
@@ -17,18 +17,18 @@
         android:visibility="visible" />
 
     <Button
-        android:id="@+id/viewWinnerBtn"
+        android:id="@+id/btn_view_winner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="setActiveFragments"
         android:text="View Winner"
         android:visibility="visible" />
 
-    <fragment
-        android:id="@+id/fragment_container"
+    <FrameLayout
+        android:id="@+id/container_fragments"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
-    </fragment>
+    </FrameLayout>
 
 </LinearLayout>
