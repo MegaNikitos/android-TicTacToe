@@ -1,33 +1,27 @@
 package com.example.tictactoe
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
+import com.example.tictactoe.databinding.ActivityMainBinding
+import com.example.tictactoe.ui.main_menu.MainMenuFragment
 
 class MainActivity : AppCompatActivity() {
+
+    private var binding : ActivityMainBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
+        openFragment(MainMenuFragment())
     }
 
-    fun setActiveFragments (view : View){
-        var fragment : Fragment? = null
+    private fun openFragment(fragment : Fragment){
+        val fragmentManager = getSupportFragmentManager()
+        val fragmentTransaction = fragmentManager.beginTransaction()
 
-        when (view.getId()){
-            R.id.btn_new_game -> fragment = GameboardFragment()
-            R.id.btn_view_winner -> fragment = WinnerViewFragment()
-            else -> {}
-        }
-
-        val fragmentManager : FragmentManager = getSupportFragmentManager()
-        var fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
-
-        if (fragment != null) {
-            fragmentTransaction.replace(R.id.container_fragments, fragment)
-            fragmentTransaction.commit()
-        }
+        fragmentTransaction.replace(R.id.container_fragments, fragment)
+        fragmentTransaction.commit()
     }
 }

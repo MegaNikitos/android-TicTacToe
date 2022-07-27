@@ -7,23 +7,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
-    <Button
-        android:id="@+id/btn_new_game"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="setActiveFragments"
-        android:text="View Gameboard"
-        android:visibility="visible" />
-
-    <Button
-        android:id="@+id/btn_view_winner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="setActiveFragments"
-        android:text="View Winner"
-        android:visibility="visible" />
-
     <FrameLayout
         android:id="@+id/container_fragments"
         android:layout_width="match_parent"

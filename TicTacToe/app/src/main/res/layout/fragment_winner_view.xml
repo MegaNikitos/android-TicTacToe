@@ -3,9 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
     android:orientation="vertical"
-    tools:context=".WinnerViewFragment">
+    tools:context=".ui.view_winner_menu.WinnerViewFragment">
 
     <TextView
         android:id="@+id/winnerViewText"
@@ -15,5 +14,13 @@
         android:textAlignment="center"
         android:text="Winner viewed">
     </TextView>
+
+    <Button
+        android:id="@+id/btn_return_mainmenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="320dp"
+        android:text="Main Menu" />
 
 </LinearLayout>
