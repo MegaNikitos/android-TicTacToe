@@ -2,15 +2,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_mainmenu"
     android:orientation="vertical"
     tools:context=".ui.main_menu.MainMenuFragment">
+
+    <TextView
+        android:id="@+id/text_app_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:textColor="#000000"
+        android:text="@string/title"
+        android:fontFamily="@font/ofont"
+        android:textAlignment="center"
+        android:paddingTop="15dp"/>
 
     <Button
         android:id="@+id/btn_hot_sit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="118dp"
         android:text="Player vs Player" />
 
 

@@ -1,19 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".ui.gameboard.GameboardFragment">
 
-    <TextView
-        android:id="@+id/gameboardViewText"
+    <ImageView
+        android:id="@+id/image_cross_player"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="36sp"
+        android:src="@drawable/image_cross_player" />
+
+    <TextView
+        android:id="@+id/text_upper_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_cross_player"
+        android:fontFamily="@font/ofont"
+        android:text="Ходит крестик!"
         android:textAlignment="center"
-        android:text="Gameboard viewed">
-    </TextView>
+        android:textColor="#000000"
+        android:textSize="24sp" />
 
+    <ImageView
+        android:id="@+id/image_game_board"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_upper_indicator"
+        android:src="@drawable/image_game_board" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/text_lower_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_game_board"
+        android:fontFamily="@font/ofont"
+        android:text="Ходит крестик!"
+        android:textAlignment="center"
+        android:rotation="180"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/image_zero_player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_lower_indicator"
+        android:src="@drawable/image_zero_player" />
+
+</RelativeLayout>

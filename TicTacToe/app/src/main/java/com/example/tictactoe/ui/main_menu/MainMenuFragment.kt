@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.example.tictactoe.R
 import com.example.tictactoe.databinding.FragmentMainMenuBinding
 import com.example.tictactoe.ui.gameboard.GameboardFragment

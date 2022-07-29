@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tictactoe.R
 import com.example.tictactoe.databinding.FragmentWinnerViewBinding
-import com.example.tictactoe.ui.gameboard.GameboardFragment
 import com.example.tictactoe.ui.main_menu.MainMenuFragment
 
 class WinnerViewFragment : Fragment() {
