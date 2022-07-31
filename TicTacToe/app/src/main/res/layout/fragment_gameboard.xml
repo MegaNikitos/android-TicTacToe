@@ -7,47 +7,183 @@
     android:orientation="vertical"
     tools:context=".ui.gameboard.GameboardFragment">
 
-    <ImageView
-        android:id="@+id/image_cross_player"
+    <RelativeLayout
+        android:id="@+id/container_cross_player"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/image_cross_player" />
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:id="@+id/image_cross_player_pencil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/image_pencil"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:id="@+id/text_cross_player_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/ofont"
+            android:padding="26dp"
+            android:rotation="180"
+            android:text="@string/title"
+            android:textColor="#000000"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/image_cross_player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="18dp"
+            android:src="@drawable/image_cross" />
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/text_upper_indicator"
+        android:id="@+id/text_upper_move"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/image_cross_player"
-        android:fontFamily="@font/ofont"
-        android:text="Ходит крестик!"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="24sp" />
-
-    <ImageView
-        android:id="@+id/image_game_board"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_upper_indicator"
-        android:src="@drawable/image_game_board" />
-
-    <TextView
-        android:id="@+id/text_lower_indicator"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/image_game_board"
-        android:fontFamily="@font/ofont"
-        android:text="Ходит крестик!"
-        android:textAlignment="center"
+        android:layout_above="@id/container_game_board"
+        android:layout_marginBottom="24dp"
         android:rotation="180"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:fontFamily="@font/ofont"
         android:textColor="#000000"
-        android:textSize="24sp" />
+        android:text="Ходит крестик!"/>
 
-    <ImageView
-        android:id="@+id/image_zero_player"
+    <RelativeLayout
+        android:id="@+id/container_game_board"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/image_game_board">
+
+        <ImageView
+            android:id="@+id/cell_1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+
+        <ImageView
+            android:id="@+id/cell_2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_toEndOf="@id/cell_1"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+
+        <ImageView
+            android:id="@+id/cell_3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_toEndOf="@id/cell_2"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+
+        <ImageView
+            android:id="@+id/cell_4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/cell_1"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+
+        <ImageView
+            android:id="@+id/cell_5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/cell_2"
+            android:layout_toEndOf="@id/cell_4"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+
+        <ImageView
+            android:id="@+id/cell_6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/cell_3"
+            android:layout_toEndOf="@id/cell_5"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+
+        <ImageView
+            android:id="@+id/cell_7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/cell_4"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+
+        <ImageView
+            android:id="@+id/cell_8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/cell_5"
+            android:layout_toEndOf="@id/cell_7"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+
+        <ImageView
+            android:id="@+id/cell_9"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/cell_6"
+            android:layout_toEndOf="@id/cell_8"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text_lower_move"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_lower_indicator"
-        android:src="@drawable/image_zero_player" />
+        android:layout_below="@id/container_game_board"
+        android:layout_marginTop="24dp"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:fontFamily="@font/ofont"
+        android:textColor="#000000"
+        android:text="Ходит крестик!"/>
+
+    <RelativeLayout
+        android:id="@+id/container_zero_player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:rotation="180"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/image_zero_player_pencil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/image_pencil"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:id="@+id/text_zero_player_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/ofont"
+            android:padding="26dp"
+            android:rotation="180"
+            android:text="@string/title"
+            android:textColor="#000000"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/image_zero_player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="18dp"
+            android:src="@drawable/image_zero" />
+    </RelativeLayout>
 
 </RelativeLayout>
