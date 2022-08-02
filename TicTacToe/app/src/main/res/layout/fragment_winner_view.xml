@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,6 +20,8 @@
 
     <TextView
         android:id="@+id/text_winner"
+        android:layout_above="@id/container_game_board"
+        android:padding="26dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="24sp"
@@ -30,19 +32,96 @@
         android:layout_marginTop="140dp"/>
 
 
-    <ImageView
-        android:id="@+id/image_winner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/image_cross_is_winner" />
+    <RelativeLayout
+        android:id="@+id/container_game_board"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/image_game_board">
+
+        <ImageView
+            android:id="@+id/cell_1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+
+        <ImageView
+            android:id="@+id/cell_2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_toEndOf="@id/cell_1"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+
+        <ImageView
+            android:id="@+id/cell_3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_toEndOf="@id/cell_2"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+
+        <ImageView
+            android:id="@+id/cell_4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/cell_1"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+
+        <ImageView
+            android:id="@+id/cell_5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/cell_2"
+            android:layout_toEndOf="@id/cell_4"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+
+        <ImageView
+            android:id="@+id/cell_6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/cell_3"
+            android:layout_toEndOf="@id/cell_5"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+
+        <ImageView
+            android:id="@+id/cell_7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/cell_4"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+
+        <ImageView
+            android:id="@+id/cell_8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/cell_5"
+            android:layout_toEndOf="@id/cell_7"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+
+        <ImageView
+            android:id="@+id/cell_9"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/cell_6"
+            android:layout_toEndOf="@id/cell_8"
+            android:scaleType="centerInside"
+            tools:src="@drawable/image_zero"/>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/btn_return_mainmenu"
+        android:layout_below="@id/container_game_board"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="60dp"
         android:text="Main Menu" />
 
-</LinearLayout>
+</RelativeLayout>
