@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.example.tictactoe.R
 import com.example.tictactoe.databinding.FragmentMainMenuBinding
+import com.example.tictactoe.ui.base.BaseFragment
 import com.example.tictactoe.ui.gameboard.GameboardFragment
 
 
-class MainMenuFragment : Fragment() {
+class MainMenuFragment : BaseFragment() {
 
     private var binding : FragmentMainMenuBinding? = null
 
@@ -23,13 +22,5 @@ class MainMenuFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.btnHotSit?.setOnClickListener{openFragment(GameboardFragment())}
-    }
-
-    private fun openFragment(fragment : Fragment){
-        val fm = fragmentManager ?: return
-        val fragmentTransaction = fm.beginTransaction()
-
-        fragmentTransaction.replace(R.id.container_fragments, fragment)
-        fragmentTransaction.commit()
     }
 }
