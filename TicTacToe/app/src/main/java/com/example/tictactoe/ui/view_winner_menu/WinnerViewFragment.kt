@@ -15,6 +15,20 @@ class WinnerViewFragment : BaseFragment() {
 
     private var binding : FragmentWinnerViewBinding? = null
 
+    companion object{
+        private val DATA = "key"
+
+        fun newInstance(row : String) : WinnerViewFragment{
+            val bundle = Bundle()
+
+            bundle.putString(DATA, row)
+            val fragment = WinnerViewFragment()
+            fragment.arguments = bundle
+
+            return fragment
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentWinnerViewBinding.inflate(inflater, container, false)
         return binding?.root
@@ -23,6 +37,10 @@ class WinnerViewFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val args = arguments?.getString(DATA) ?: ""
+        binding?.textWinner?.setText("$args")
+
         binding?.btnReturnMainmenu?.setOnClickListener{openFragment(MainMenuFragment())}
     }
 }
+

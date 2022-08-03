@@ -12,6 +12,7 @@ import com.example.tictactoe.R
 import com.example.tictactoe.databinding.FragmentGameboardBinding
 import com.example.tictactoe.ui.base.BaseFragment
 import com.example.tictactoe.ui.view_winner_menu.WinnerViewFragment
+import java.lang.reflect.Type
 import java.util.concurrent.atomic.AtomicBoolean
 
 class GameboardFragment : BaseFragment() {
@@ -22,14 +23,14 @@ class GameboardFragment : BaseFragment() {
     private lateinit var currentState : CellState
 
     private val victoryOptions = arrayOf(
-        arrayOf(1,2,3),
-        arrayOf(4,5,6),
-        arrayOf(7,8,9),
-        arrayOf(1,5,9),
-        arrayOf(3,5,7),
+        arrayOf(0,1,2),
+        arrayOf(0,4,8),
+        arrayOf(0,3,6),
         arrayOf(1,4,7),
         arrayOf(2,5,8),
-        arrayOf(3,6,9)
+        arrayOf(2,4,6),
+        arrayOf(3,4,5),
+        arrayOf(6,7,8)
     )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -41,82 +42,82 @@ class GameboardFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         startGame()
 
-        binding?.cell1?.setOnClickListener{onCellClick(1)}
-        binding?.cell2?.setOnClickListener{onCellClick(2)}
-        binding?.cell3?.setOnClickListener{onCellClick(3)}
-        binding?.cell4?.setOnClickListener{onCellClick(4)}
-        binding?.cell5?.setOnClickListener{onCellClick(5)}
-        binding?.cell6?.setOnClickListener{onCellClick(6)}
-        binding?.cell7?.setOnClickListener{onCellClick(7)}
-        binding?.cell8?.setOnClickListener{onCellClick(8)}
-        binding?.cell9?.setOnClickListener{onCellClick(9)}
+        binding?.cell1?.setOnClickListener{onCellClicked(0)}
+        binding?.cell2?.setOnClickListener{onCellClicked(1)}
+        binding?.cell3?.setOnClickListener{onCellClicked(2)}
+        binding?.cell4?.setOnClickListener{onCellClicked(3)}
+        binding?.cell5?.setOnClickListener{onCellClicked(4)}
+        binding?.cell6?.setOnClickListener{onCellClicked(5)}
+        binding?.cell7?.setOnClickListener{onCellClicked(6)}
+        binding?.cell8?.setOnClickListener{onCellClicked(7)}
+        binding?.cell9?.setOnClickListener{onCellClicked(8)}
     }
 
     private fun startGame() {
-        conditions = Array<CellState>(10){ CellState.None }
+        conditions = Array<CellState>(9){ CellState.None }
         currentState = CellState.Zero
 
         switchPlayer()
     }
 
-    private fun onCellClick(index : Int){
+    private fun onCellClicked(index : Int){
 
         if(conditions[index] == CellState.None){
             conditions[index] = currentState
             currentState = if (currentState == CellState.Cross) CellState.Zero else CellState.Cross
 
             when (index) {
-                1 -> {
+                0 -> {
                     if(currentState == CellState.Zero) binding?.cell1?.setImageResource(R.drawable.image_zero)
                     else binding?.cell1?.setImageResource(R.drawable.image_cross)
                 }
 
-                2 -> {
+                1 -> {
                     if(currentState == CellState.Zero) binding?.cell2?.setImageResource(R.drawable.image_zero)
                     else binding?.cell2?.setImageResource(R.drawable.image_cross)
                 }
 
-                3 -> {
+                2 -> {
                     if(currentState == CellState.Zero) binding?.cell3?.setImageResource(R.drawable.image_zero)
                     else binding?.cell3?.setImageResource(R.drawable.image_cross)
                 }
 
-                4 -> {
+                3 -> {
                     if(currentState == CellState.Zero) binding?.cell4?.setImageResource(R.drawable.image_zero)
                     else binding?.cell4?.setImageResource(R.drawable.image_cross)
                 }
 
-                5 -> {
+                4 -> {
                     if(currentState == CellState.Zero) binding?.cell5?.setImageResource(R.drawable.image_zero)
                     else binding?.cell5?.setImageResource(R.drawable.image_cross)
                 }
 
-                6 -> {
+                5 -> {
                     if(currentState == CellState.Zero) binding?.cell6?.setImageResource(R.drawable.image_zero)
                     else binding?.cell6?.setImageResource(R.drawable.image_cross)
                 }
 
-                7 -> {
+                6 -> {
                     if(currentState == CellState.Zero) binding?.cell7?.setImageResource(R.drawable.image_zero)
                     else binding?.cell7?.setImageResource(R.drawable.image_cross)
                 }
 
-                8 -> {
+                7 -> {
                     if(currentState == CellState.Zero) binding?.cell8?.setImageResource(R.drawable.image_zero)
                     else binding?.cell8?.setImageResource(R.drawable.image_cross)
                 }
 
-                9 -> {
+                8 -> {
                     if(currentState == CellState.Zero) binding?.cell9?.setImageResource(R.drawable.image_zero)
                     else binding?.cell9?.setImageResource(R.drawable.image_cross)
                 }
             }
 
-            if(checkVictory()){
-                openFragment(WinnerViewFragment())
+            if(checkVictory() != null){
+                openFragment(WinnerViewFragment.newInstance("TEEEEXT"))
             }
             else if(checkNone()){
-
+                openFragment(WinnerViewFragment.newInstance("None"))
             }
 
             switchPlayer()
@@ -135,11 +136,12 @@ class GameboardFragment : BaseFragment() {
         }
     }
 
-    private fun checkVictory() : Boolean {
+    private fun checkVictory() : Array<Int>? {
         victoryOptions.forEach {
-            if(checkVictoryLine(it)) return true
+            if(checkVictoryLine(it)) return it
         }
-        return false
+
+        return null
     }
 
     private fun checkVictoryLine(row : Array<Int>) : Boolean {
@@ -156,7 +158,6 @@ class GameboardFragment : BaseFragment() {
     private fun checkNone() : Boolean {
         return !conditions.contains(CellState.None)
     }
-
 }
 
 enum class CellState(@DrawableRes val icon: Int, val isClicable : Boolean) {
