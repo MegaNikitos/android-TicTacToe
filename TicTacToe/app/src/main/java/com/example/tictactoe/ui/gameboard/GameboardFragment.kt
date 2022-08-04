@@ -113,11 +113,12 @@ class GameboardFragment : BaseFragment() {
                 }
             }
 
-            if(checkVictory() != null){
-                openFragment(WinnerViewFragment.newInstance("TEEEEXT"))
+            val winRow = checkVictory()
+            if(winRow != null){
+                openFragment(WinnerViewFragment.newInstance(currentState, winRow))
             }
             else if(checkNone()){
-                openFragment(WinnerViewFragment.newInstance("None"))
+                openFragment(WinnerViewFragment.newInstance(CellState.None))
             }
 
             switchPlayer()
